@@ -1,0 +1,40 @@
+--- origsrc/SDL_mixer-1.2.12/configure.in	2012-06-03 18:58:58.051066900 -0500
++++ src/SDL_mixer-1.2.12/configure.in	2012-06-03 19:00:19.793742300 -0500
+@@ -56,17 +56,8 @@ fi
+ AC_CHECK_PROGS(WINDRES, [windres $hostaliaswindres $host_os-windres])
+ 
+ dnl Set up the compiler and linker flags
+-case "$host" in
+-    *-*-cygwin*)
+-        # We build SDL on cygwin without the UNIX emulation layer
+-        BASE_CFLAGS="-I/usr/include/mingw -mno-cygwin"
+-        BASE_LDFLAGS="-mno-cygwin"
+-        ;;
+-    *)
+-        BASE_CFLAGS="-D_GNU_SOURCE=1"
+-        BASE_LDFLAGS=""
+-        ;;
+-esac
++BASE_CFLAGS="-D_GNU_SOURCE=1"
++BASE_LDFLAGS=""
+ BUILD_CFLAGS="$CFLAGS $CPPFLAGS"
+ EXTRA_CFLAGS="$INCLUDE $BASE_CFLAGS"
+ BUILD_LDFLAGS="$LDFLAGS"
+@@ -115,7 +106,7 @@ case "$host" in
+         #VERSION_SOURCES="$srcdir/version.rc"
+         EXE=".exe"
+ 	;;
+-    *-*-cygwin* | *-*-mingw32*)
++    *-*-mingw32*)
+         VERSION_SOURCES="$srcdir/version.rc"
+         EXE=".exe"
+         if test "$build" != "$host"; then # cross-compiling
+@@ -286,7 +277,7 @@ return 1;
+             *-*-cygwin*)
+                 mikmod_lib=/usr/bin/mikmod-2.dll
+                 ;;
+-            *-*-cygwin* | *-*-mingw32*)
++            *-*-mingw32*)
+                 mikmod_lib=[`find_lib "libmikmod*.dll"`]
+                 ;;
+             *)
