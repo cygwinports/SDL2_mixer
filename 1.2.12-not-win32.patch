@@ -23,18 +23,9 @@
 @@ -115,7 +106,7 @@ case "$host" in
          #VERSION_SOURCES="$srcdir/version.rc"
          EXE=".exe"
- 	;;
+     ;;
 -    *-*-cygwin* | *-*-mingw32*)
 +    *-*-mingw32*)
          VERSION_SOURCES="$srcdir/version.rc"
          EXE=".exe"
          if test "$build" != "$host"; then # cross-compiling
-@@ -286,7 +277,7 @@ return 1;
-             *-*-cygwin*)
-                 mikmod_lib=/usr/bin/mikmod-2.dll
-                 ;;
--            *-*-cygwin* | *-*-mingw32*)
-+            *-*-mingw32*)
-                 mikmod_lib=[`find_lib "libmikmod*.dll"`]
-                 ;;
-             *)

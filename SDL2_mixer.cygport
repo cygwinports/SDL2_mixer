@@ -1,6 +1,6 @@
 NAME="SDL2_mixer"
-VERSION=2.0.0
-RELEASE=3
+VERSION=2.0.1
+RELEASE=1
 CATEGORY="Libs"
 SUMMARY="Multi-channel audio mixer for SDL"
 DESCRIPTION="SDL_mixer is a simple multi-channel audio mixer based on SDL. It
@@ -10,8 +10,7 @@ MIDI files, and music formats .MOD .S3M .IT .XM."
 HOMEPAGE="http://www.libsdl.org/projects/SDL_mixer/"
 SRC_URI="${HOMEPAGE}/release/${NAME}-${VERSION}.tar.gz"
 PATCH_URI="
-	http://pkgs.fedoraproject.org/cgit/SDL2_mixer.git/plain/properly_include_modplug.patch
-	1.2.12-dlopen-libs.patch
+	2.0.1-dlopen-libs.patch
 	1.2.12-not-win32.patch
 	1.2.8-native-midi-win32.patch
 "
@@ -33,4 +32,3 @@ CYGCONF_ARGS="
 "
 
 DOCS="*.txt"
-KEEP_LA_FILES="none"

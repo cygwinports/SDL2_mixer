@@ -1,18 +1,20 @@
---- origsrc/SDL_mixer-1.2.12/configure.in	2012-06-03 18:54:25.074453500 -0500
-+++ src/SDL_mixer-1.2.12/configure.in	2012-06-03 18:58:25.679215400 -0500
-@@ -283,6 +283,9 @@ return 1;
+--- origsrc/SDL2_mixer-2.0.1/configure.in	2017-07-06 00:09:44.214031600 -0500
++++ src/SDL2_mixer-2.0.1/configure.in	2017-07-06 00:09:59.122022900 -0500
+@@ -335,7 +335,10 @@ return 1;
              *-*-darwin*)
                  mikmod_lib=[`find_lib libmikmod.dylib`]
                  ;;
+-            *-*-cygwin* | *-*-mingw32*)
 +            *-*-cygwin*)
 +                mikmod_lib=/usr/bin/cygmikmod-3.dll
 +                ;;
-             *-*-cygwin* | *-*-mingw32*)
++            *-*-mingw32*)
                  mikmod_lib=[`find_lib "libmikmod*.dll"`]
                  ;;
-@@ -391,7 +394,10 @@ AC_HELP_STRING([--enable-music-fluidsynt
-                         fluidsynth_lib=[`find_lib libfluidsynth.[0-9]*`]
-                     fi
+             *)
+@@ -420,7 +423,10 @@ AC_HELP_STRING([--enable-music-midi-flui
+                 *-*-darwin*)
+                     fluidsynth_lib=[`find_lib libfluidsynth.dylib`]
                      ;;
 -                *-*-cygwin* | *-*-mingw32*)
 +                *-*-cygwin*)
@@ -22,7 +24,7 @@
                      fluidsynth_lib=[`find_lib "fluidsynth*.dll"`]
                      ;;
                  *)
-@@ -470,7 +476,10 @@ if test x$enable_music_ogg = xyes; then
+@@ -499,7 +505,10 @@ if test x$enable_music_ogg = xyes; then
                  *-*-darwin*)
                      ogg_lib=[`find_lib libvorbisfile.dylib`]
                      ;;
@@ -34,7 +36,7 @@
                      ogg_lib=[`find_lib "libvorbisfile*.dll"`]
                      ;;
                  *)
-@@ -530,7 +539,10 @@ if test x$enable_music_flac = xyes; then
+@@ -559,7 +568,10 @@ if test x$enable_music_flac = xyes; then
                  *-*-darwin*)
                      flac_lib=[`find_lib libFLAC.dylib`]
                      ;;
@@ -46,3 +48,15 @@
                      flac_lib=[`find_lib "libFLAC-*.dll"`]
                      ;;
                  *)
+@@ -602,7 +614,10 @@ if test x$enable_music_mp3 = xyes -a x$e
+             *-*-darwin*)
+                 smpeg_lib=[`find_lib libsmpeg2.dylib`]
+                 ;;
+-            *-*-cygwin* | *-*-mingw32*)
++            *-*-cygwin*)
++                smpeg_lib=/usr/bin/cygsmpeg2-2-0-0.dll
++                ;;
++            *-*-mingw32*)
+                 smpeg_lib=[`find_lib "smpeg2*.dll"`]
+                 ;;
+             *)
