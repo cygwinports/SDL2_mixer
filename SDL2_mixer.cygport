@@ -1,5 +1,5 @@
 NAME="SDL2_mixer"
-VERSION=2.0.1
+VERSION=2.0.2
 RELEASE=1
 CATEGORY="Libs"
 SUMMARY="Multi-channel audio mixer for SDL"
@@ -10,7 +10,7 @@ MIDI files, and music formats .MOD .S3M .IT .XM."
 HOMEPAGE="http://www.libsdl.org/projects/SDL_mixer/"
 SRC_URI="${HOMEPAGE}/release/${NAME}-${VERSION}.tar.gz"
 PATCH_URI="
-	2.0.1-dlopen-libs.patch
+	2.0.2-dlopen-libs.patch
 	1.2.12-not-win32.patch
 	1.2.8-native-midi-win32.patch
 "
@@ -19,15 +19,18 @@ PKG_NAMES="lib${NAME}2.0_0 lib${NAME}-devel"
 libSDL2_mixer2_0_0_CONTENTS='usr/bin/*-2-0-0.dll usr/share/doc/'
 libSDL2_mixer_devel_CONTENTS='usr/include/ usr/lib/'
 
-DISTCLEANFILES="acinclude/l*.m4 acinclude/pkg.m4 acinclude/sdl2.m4"
+DISTCLEANFILES="acinclude/l*.m4 acinclude/pkg.m4 acinclude/sdl2.m4 aclocal.m4"
 ACLOCAL_FLAGS="-I acinclude"
 NO_AUTOHEADER=1
 
 CYGCONF_ARGS="
-	--disable-music-mp3
 	--disable-music-flac-shared
-	--disable-music-fluidsynth-shared
-	--disable-music-mod-shared
+	--disable-music-midi-fluidsynth-shared
+	--disable-music-mod-modplug-shared
+	--disable-music-mod-mikmod-shared
+	--disable-music-mp3-smpeg
+	--disable-music-mp3-mad-gpl
+	--disable-music-mp3-mpg123-shared
 	--disable-music-ogg-shared
 "
 

@@ -1,6 +1,18 @@
---- origsrc/SDL2_mixer-2.0.1/configure.in	2017-07-06 00:09:44.214031600 -0500
-+++ src/SDL2_mixer-2.0.1/configure.in	2017-07-06 00:09:59.122022900 -0500
-@@ -335,7 +335,10 @@ return 1;
+--- origsrc/SDL2_mixer-2.0.2/configure.in	2017-12-08 00:10:41.332303600 -0600
++++ src/SDL2_mixer-2.0.2/configure.in	2017-12-08 00:10:50.539073200 -0600
+@@ -248,7 +248,10 @@ if test x$enable_music_mod = xyes -a x$e
+             *-*-darwin*)
+                 modplug_lib=[`find_lib libmodplug.dylib`]
+                 ;;
+-            *-*-cygwin* | *-*-mingw32*)
++            *-*-cygwin*)
++                modplug_lib=/usr/bin/cygmodplug-1.dll
++                ;;
++            *-*-mingw32*)
+                 modplug_lib=[`find_lib "libmodplug*.dll"`]
+                 ;;
+             *)
+@@ -315,7 +318,10 @@ return 1;
              *-*-darwin*)
                  mikmod_lib=[`find_lib libmikmod.dylib`]
                  ;;
@@ -12,7 +24,7 @@
                  mikmod_lib=[`find_lib "libmikmod*.dll"`]
                  ;;
              *)
-@@ -420,7 +423,10 @@ AC_HELP_STRING([--enable-music-midi-flui
+@@ -399,7 +405,10 @@ AC_HELP_STRING([--enable-music-midi-flui
                  *-*-darwin*)
                      fluidsynth_lib=[`find_lib libfluidsynth.dylib`]
                      ;;
@@ -24,7 +36,7 @@
                      fluidsynth_lib=[`find_lib "fluidsynth*.dll"`]
                      ;;
                  *)
-@@ -499,7 +505,10 @@ if test x$enable_music_ogg = xyes; then
+@@ -476,7 +485,10 @@ if test x$enable_music_ogg = xyes; then
                  *-*-darwin*)
                      ogg_lib=[`find_lib libvorbisfile.dylib`]
                      ;;
@@ -36,7 +48,7 @@
                      ogg_lib=[`find_lib "libvorbisfile*.dll"`]
                      ;;
                  *)
-@@ -559,7 +568,10 @@ if test x$enable_music_flac = xyes; then
+@@ -535,7 +547,10 @@ if test x$enable_music_flac = xyes; then
                  *-*-darwin*)
                      flac_lib=[`find_lib libFLAC.dylib`]
                      ;;
@@ -48,7 +60,7 @@
                      flac_lib=[`find_lib "libFLAC-*.dll"`]
                      ;;
                  *)
-@@ -602,7 +614,10 @@ if test x$enable_music_mp3 = xyes -a x$e
+@@ -577,7 +592,10 @@ if test x$enable_music_mp3 = xyes -a x$e
              *-*-darwin*)
                  smpeg_lib=[`find_lib libsmpeg2.dylib`]
                  ;;
@@ -58,5 +70,17 @@
 +                ;;
 +            *-*-mingw32*)
                  smpeg_lib=[`find_lib "smpeg2*.dll"`]
+                 ;;
+             *)
+@@ -639,7 +657,10 @@ if test x$enable_music_mp3_mpg123 = xyes
+             *-*-darwin*)
+                 mpg123_lib=[`find_lib libmpg123.dylib`]
+                 ;;
+-            *-*-cygwin* | *-*-mingw32*)
++            *-*-cygwin*)
++                mpg123_lib=/usr/bin/cygmpg123-0.dll
++                ;;
++            *-*-mingw32*)
+                 mpg123_lib=[`find_lib "libmpg123*.dll"`]
                  ;;
              *)
